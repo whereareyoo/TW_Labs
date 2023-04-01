@@ -1,0 +1,192 @@
+/*#root {*/
+/*  max-width: 1280px;*/
+/*  margin: 0 auto;*/
+/*  padding: 2rem;*/
+/*  text-align: center;*/
+/*}*/
+
+/*.logo {*/
+/*  height: 6em;*/
+/*  padding: 1.5em;*/
+/*  will-change: filter;*/
+/*  transition: filter 300ms;*/
+/*}*/
+/*.logo:hover {*/
+/*  filter: drop-shadow(0 0 2em #646cffaa);*/
+/*}*/
+/*.logo.react:hover {*/
+/*  filter: drop-shadow(0 0 2em #61dafbaa);*/
+/*}*/
+
+/*@keyframes logo-spin {*/
+/*  from {*/
+/*    transform: rotate(0deg);*/
+/*  }*/
+/*  to {*/
+/*    transform: rotate(360deg);*/
+/*  }*/
+/*}*/
+
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*  a:nth-of-type(2) .logo {*/
+/*    animation: logo-spin infinite 20s linear;*/
+/*  }*/
+/*}*/
+
+/*.card {*/
+/*  padding: 2em;*/
+/*}*/
+
+/*.read-the-docs {*/
+/*  color: #888;*/
+/*}*/
+
+/*.App*/
+/*{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    min-height: 100vh;*/
+/*}*/
+
+.content-wrapper
+{
+    flex: 1;
+}
+
+.main_picture
+{
+    height: 600px;
+    width: 100%;
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+    overflow: hidden;
+    background: #C04848;  /* fallback for old browsers */
+
+    /*background: linear-gradient(rgb(72,0,72,0.8), rgb(192,72,72,0.8)), url('../src/app/util/bgggjpg.jpg');  !* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: linear-gradient(rgb(72,0,72,0.8), rgb(192,72,72,0.8)), url('../src/app/util/bgggjpg.jpg'); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.main_picture h1
+{
+    font-family: "Courier New";
+    font-size: xxx-large;
+
+}
+
+.main_picture h2
+{
+    font-family: "Courier New";
+    font-size: xx-large;
+}
+
+
+.aboutUs
+{
+    height:700px;
+    background-color: white;
+}
+
+.aboutUs h1
+{
+    color: #1B1556;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 40px;
+
+}
+
+.aboutUs p
+{
+    color: #1B1556;
+    margin-top: 0;
+    padding-top: 40px;
+    padding-left: 40px;
+    font-family: Roboto;
+
+}
+
+#europePic
+{
+    float: right;
+    width: 500px;
+    height: 500px;
+    margin-right: 100px;
+}
+
+.hot_tours
+{
+    background-color: #1B1556;
+    height: 500px;
+}
+
+.card_container
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.container
+{
+    border: 2px solid #ccc;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 16px;
+    margin: 16px 0;
+    height: 100px;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.container img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    height: 100%;
+}
+
+.container span {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+@media (max-width: 500px) {
+    .container {
+        text-align: center;
+    }
+    .container img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
+}
+
+.parallax
+{
+    /* The image used */
+    background: linear-gradient(rgb(0,0,0,0.7), rgb(0,0,0,0.7)), url('../src/app/util/bgggjpg.jpg');  /* Chrome 10-25, Safari 5.1-6 *!*/
+
+    /* Full height */
+    /*height: 300px;*/
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
