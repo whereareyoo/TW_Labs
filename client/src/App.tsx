@@ -8,6 +8,8 @@ import {Grid} from "@mui/material";
 import Card from "./app/components/Card";
 //import bg from "./app/util/bgggjpg.jpg";
 import eu from "./app/util/europe.png";
+import CardPage from "./app/components/CardPage";
+import Form from "./app/components/Form";
 
 
 function App() {
@@ -35,19 +37,7 @@ function App() {
                 Mauris quis diam velit.</p>
             </div>
         {/*<div className="parallax"></div>*/}
-        <div className="hot_tours">
-            <Grid container className="card_container">
-                <Grid item xs={3}>
-                    <Card />
-                </Grid>
-                <Grid item xs={3}>
-                    <Card />
-                </Grid>
-                <Grid item xs={3}>
-                    <Card />
-                </Grid>
-            </Grid>
-        </div>
+        <CardPage/>
         <div className="testimonials">
             <div className="container">
                 <img src={eu} id="avatar"/>
@@ -60,6 +50,7 @@ function App() {
                 <p>John Doe saved us from a web disaster.</p>
             </div>
         </div>
+        <Form/>
         <Footer />
     </div>
 

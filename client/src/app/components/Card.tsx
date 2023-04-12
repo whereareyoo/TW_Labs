@@ -6,53 +6,65 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import picture from "../util/iasi.jpg";
 import {useEffect, useRef, useState} from "react";
-import Form from "./Form";
+import {TourDetails} from "./tourDetails";
 
-export default function MultiActionAreaCard() {
-    const [showForm, setShowForm] = useState(false);
-    //setShowForm(!showForm);
+interface CardProps {
+    data: TourDetails
+}
 
-    useEffect(() => {
-        document.addEventListener("click", handleClickOutside, true)
-    },[])
+export const firstData : TourDetails = {
+    title: "Discover Iasi town",
+    description: "Get to know the beautiful romanian city with rich history,\n" +
+        "great architecture and other sights",
+    image: "https://nordnews.md/wp-content/uploads/2020/11/iasi.jpg",
+    price: 100,
+    currency: '$'
+}
 
-    const refOne = useRef(null);
+export const secondData : TourDetails = {
+    title: "Discover Berlin town",
+    description: "Get to know the beautiful german city with rich history,\n" +
+        "great architecture and other sights",
+    image: "https://www.deutschland.de/sites/default/files/media/image/T%C3%BCD_Politisches_Zentrum-Berlin_Reichstagsgeb%C3%A4ude.jpg",
+    price: 200,
+    currency: '$'
+}
 
-    const handleClickOutside = (e: any) => {
-        // @ts-ignore
-        if(!refOne.current.contains(e.target)) {
-            setShowForm(false);
-        }
-    }
-    
+export const thirdData : TourDetails = {
+    title: "Discover Paris town",
+    description: "Get to know the beautiful french city with rich history,\n" +
+        "great architecture and other sights",
+    image: "https://images.adsttc.com/media/images/5d44/14fa/284d/d1fd/3a00/003d/large_jpg/eiffel-tower-in-paris-151-medium.jpg?1564742900",
+    price: 300,
+    currency: '$'
+}
+
+export const MultiActionAreaCard : React.FC<CardProps> = ({data}) => {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={picture}
+                    image={data.image}
                     alt="green iguana"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        Iași, România
+                        {data.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Get to know the beautiful romanian city with rich history,
-                        great architecture and other sights
+                        {data.description}
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions  ref = {refOne}>
-                {showForm ? (
-                    <Form  />
-                    ) : (
-                    <Button onClick={() => setShowForm(true)} size="small" color="primary">
+            <CardActions>
+                    <Button size="small" color="primary">
                         Book ticket
                     </Button>
-                )}
             </CardActions>
         </Card>
     );
 }
+
+export default MultiActionAreaCard;
