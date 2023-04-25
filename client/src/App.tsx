@@ -15,8 +15,10 @@ import Form from "./app/components/Form";
 function App() {
   const [count, setCount] = useState(0)
 
-  return (
+  // @ts-ignore
+    return (
     <div className="App">
+
         <Header />
         <div className="main_picture parallax">
             <h1>EUROTOUR</h1>
@@ -50,7 +52,7 @@ function App() {
                 <p>John Doe saved us from a web disaster.</p>
             </div>
         </div>
-        <Form/>
+        <Form />
         <Footer />
     </div>
 

@@ -3,10 +3,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import {Button, CardActionArea, CardActions, Modal, paperClasses} from '@mui/material';
 import picture from "../util/iasi.jpg";
 import {useEffect, useRef, useState} from "react";
 import {TourDetails} from "./tourDetails";
+import Form from './Form';
+import './Form.css'
+
+
+
 
 interface CardProps {
     data: TourDetails
@@ -40,6 +45,12 @@ export const thirdData : TourDetails = {
 }
 
 export const MultiActionAreaCard : React.FC<CardProps> = ({data}) => {
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    }
+    // @ts-ignore
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
@@ -59,11 +70,18 @@ export const MultiActionAreaCard : React.FC<CardProps> = ({data}) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" onClick={handleOpen}>
                         Book ticket
                     </Button>
+
             </CardActions>
+            <Modal open={open} onClose={() => setOpen(false)} className="modal-window">
+                <div className="paper">
+                    <Form />
+                </div>
+            </Modal>
         </Card>
+
     );
 }
 
