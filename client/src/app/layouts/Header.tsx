@@ -12,13 +12,29 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import {Switch} from "@mui/material";
+import {Route, Router} from "@mui/icons-material";
+import {useState} from "react";
+import Login from "../components/Login";
 
-const pages = ['Home', 'About us', 'Book a ticket', 'Contact us'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Home', 'About us', 'Book a ticket', 'Contact us', 'Login'];
+//const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = [
+//     {name: 'Profile', route: "/profile"},
+//     {name: 'Account', route: "/profile"},
+//     {name: 'Dashboard', route: "/profile"},
+//     {name: 'Login', route: "/login"},
+// ];
+//const history = useHistory();
+
+
+
 
 function ResponsiveAppBar() {
+    const [showLogin, setShowLogin] = useState("false");
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [route, setRoute] = React.useState<string>("/");
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -34,6 +50,12 @@ function ResponsiveAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    // @ts-ignore
+    const toggleLogin = () => {
+        // @ts-ignore
+        setShowLogin(!showLogin);
+    }
 
     return (
         <AppBar position="static" style={{ background: '#1B1556' }}>
@@ -118,12 +140,16 @@ function ResponsiveAppBar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={page === "Login" ? toggleLogin : handleCloseUserMenu}
                                 sx={{ my: 2, mx: 1.5, color: 'white', display: 'block' }}
                             >
                                 {page}
                             </Button>
                         ))}
+                        {showLogin && (
+                        <Login/>
+                        )}
+
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -132,28 +158,7 @@ function ResponsiveAppBar() {
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
                         </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
+
                     </Box>
                 </Toolbar>
             </Container>

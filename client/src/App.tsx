@@ -18,7 +18,6 @@ function App() {
   // @ts-ignore
     return (
     <div className="App">
-
         <Header />
         <div className="main_picture parallax">
             <h1>EUROTOUR</h1>
