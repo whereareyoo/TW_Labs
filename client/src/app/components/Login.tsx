@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
 import {FormLabel, TextField} from "@mui/material";
+import {useNavigate} from "react-router-dom";
+import { Snackbar } from '@mui/material';
+import { useSnackbar } from 'notistack';
+
+
 
 const mockUserData = [
     { username: 'user1', password: 'pass1'},
@@ -8,11 +13,15 @@ const mockUserData = [
     { username: 'user3', password: 'pass3'},
 ];
 
+
+
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     //const [loggedIn, setLoggedIn] = useState('');
     const [formVisible, setFormVisible] = useState(true);
+    const navigate = useNavigate();
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         // @ts-ignore
@@ -40,9 +49,12 @@ const Login = () => {
             const userArray = JSON.parse(userData);
             const user = userArray.find((u : any) => u.username === username && u.password === password);
             if (user){
-                alert('Welcome!');
-                localStorage.setItem('current', JSON.stringify(username))
-                setTimeout(close, 300)
+                localStorage.setItem('current', JSON.stringify(username));
+                setFormVisible(false);
+                enqueueSnackbar('Welcome!', { variant: 'success' });
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000);
             }
             else{
                 alert("Login failed");
