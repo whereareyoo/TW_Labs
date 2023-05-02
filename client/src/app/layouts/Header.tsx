@@ -12,10 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
-import {Switch} from "@mui/material";
-import {Route, Router} from "@mui/icons-material";
 import {useState} from "react";
 import Login from "../components/Login";
+import {NavLink} from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 const pages = ['Home', 'About us', 'Book a ticket', 'Contact us', 'Login'];
 //const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -137,18 +137,7 @@ function ResponsiveAppBar() {
                         APP
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={page === "Login" ? toggleLogin : handleCloseUserMenu}
-                                sx={{ my: 2, mx: 1.5, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                        {showLogin && (
-                        <Login/>
-                        )}
+                        <NavBar />
 
                     </Box>
 
